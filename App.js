@@ -1,21 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
+import DrawerNavigator from './Navigators/DrawerNavigator';
+import Products from './Screens/Products';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { combineReducers, createStore } from 'redux';
+import ProductReducer from './Store/Reducers/ProductReducer';
+import CartReducer from './Store/Reducers/CartReducer';
+import { Provider as ReduxProvider } from 'react-redux';
 
-export default function App() {
+const reducer = combineReducers({
+  productReducer: ProductReducer,
+  cartReducer: CartReducer
+})
+
+const store = createStore(reducer);
+
+const App = props => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ReduxProvider store={store}>
+      <PaperProvider settings={{icon: props => <MaterialIcons {...props}/>}}>
+        <DrawerNavigator/>
+      </PaperProvider>
+    </ReduxProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

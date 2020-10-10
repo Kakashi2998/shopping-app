@@ -13,9 +13,11 @@ const CartIcon = props => {
         <TouchableNativeFeedback 
         background={TouchableNativeFeedback.Ripple('white')}
         onPress={() => navigation.navigate('Cart')}>
+            {numberOfItems > 0 ? 
             <Badge style={{marginBottom: -20}}>
                 {numberOfItems}
-            </Badge> 
+            </Badge>: null 
+            }
             <Appbar.Action icon='shopping-cart' color='white'/>
         </TouchableNativeFeedback>
     );

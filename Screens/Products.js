@@ -7,44 +7,26 @@ import { Appbar, Searchbar } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import CartIcon from '../Components/CartIcon';
 import ProductCard from '../Components/ProductCard';
+import SearchIcon from '../Components/SearchIcon';
 import {dummyProducts} from '../Data/dummyProducts';
 import { toggleSearch } from '../Store/Actions/ProductActions';
 
 const Products = props => {
 
     const navigation = useNavigation();
-    const isFocussed = useIsFocused();
-    const searchBarRef = React.useRef();
-    const search = useSelector(state => state.productReducer.search);
     const dispatch = useDispatch();
-    const [searchText, setSearchText] = React.useState('');
-    
-    const products = useSelector(state => state.productReducer.products)
-    .filter(product => searchText !==''? product.name.toLowerCase().includes(searchText.toLowerCase()) : true);
-    
-    const onSearch = (text) => {
-        setSearchText(text);
-    }
-    
-    
-    React.useEffect(() => {
-        if(search && isFocussed){
-            searchBarRef.current.focus();
-            dispatch(toggleSearch());
-        }
-    }, [isFocussed])
+    const products = useSelector(state => state.productReducer.products);
 
     return (
-        <View>
+        <View style={{height: '100%'}}>
             <Appbar.Header>
                 <Appbar.Action icon='menu' onPress={() => navigation.openDrawer()}/>
-                <Searchbar style={{width: 300, height: 40}} 
-                placeholder='Search' ref={searchBarRef} 
-                onChangeText={onSearch}/>
+                <Appbar.Content title='Store'/>
+                <SearchIcon/>
                 <CartIcon/>
                 <StatusBar style='light'/>
             </Appbar.Header>
-            <View>
+            <View style={{marginBottom: 100}}>
                 <FlatList 
                 data={products} 
                 renderItem={(data) => <ProductCard product={data.item}/>}

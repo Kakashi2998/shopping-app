@@ -23,4 +23,28 @@ export const dummyProducts = [
         name: 'OnePlus 7T (Glacier Blue, 8GB RAM, Fluid AMOLED Display, 256GB Storage, 3800mAH Battery)',
         price: 37999.00
     },
+    {
+        id: 'p5',
+        image: 'https://images-na.ssl-images-amazon.com/images/I/71sBGR6LZhL._SL1500_.jpg',
+        name: 'Mi TV 4A PRO 80 cm (32 inches) HD Ready Android LED TV (Black) | With Data Saver',
+        price: 13499.00
+    },
+    {
+        id: 'p6',
+        image: 'https://images-na.ssl-images-amazon.com/images/I/71ftZH%2BDJML._SL1500_.jpg',
+        name: 'Amazon Brand - Solimo Musca Single Seater Fabric Recliner (Chocolate)',
+        price: 16999.00
+    },
+    // {
+    //     id: 'p5',
+    //     image: '',
+    //     name: '',
+    //     price: 
+    // },
+    
+    //     id: 'p5',
+    //     image: '',
+    //     name: '',
+    //     price: 
+    // },
 ];

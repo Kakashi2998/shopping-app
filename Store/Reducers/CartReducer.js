@@ -1,4 +1,4 @@
-import { ADDTOCART, REMOVEFROMCART } from "../Actions/CartActions";
+import { ADDTOCART, CARTACTIONS, REMOVEFROMCART } from "../Actions/CartActions";
 
 const initState = {
     cart: [],
@@ -7,12 +7,18 @@ const initState = {
 
 const CartReducer = (state = initState, action) => {
     switch (action.type) {
-        case ADDTOCART: {
+        case CARTACTIONS.ADDTOCART: {
             return addToCart(state, action);
         };
-        case REMOVEFROMCART: {
+        case CARTACTIONS.REMOVEFROMCART: {
             return removeFromCart(state, action);
-        }
+        };
+        case CARTACTIONS.DELETEFROMCART: {
+            return deleteFromCart(state, action);
+        };
+        case CARTACTIONS.CLEARCART: {
+            return initState;
+        };
         default: return state;
     }
 }
@@ -54,7 +60,16 @@ const removeFromCart = (state, action) => {
         }
     }
     return state;
-    
+}
+
+const deleteFromCart = (state, action) => {
+    const inputItem = action.payload.product;
+    const cartItem = state.cart.find(item => item.id === inputItem.id);
+    return {
+        ...state,
+        cart: state.cart.filter(item => item.id !== cartItem.id),
+        totalPrice: state.totalPrice - (cartItem.price * cartItem.qty)
+    }
 }
 
 export default CartReducer;

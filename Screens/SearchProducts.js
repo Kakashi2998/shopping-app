@@ -4,7 +4,9 @@ import { Keyboard, View } from 'react-native';
 import { FlatList, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Appbar, Searchbar } from 'react-native-paper';
 import { useSelector } from 'react-redux';
+import CartIcon from '../Components/CartIcon';
 import ProductCard from '../Components/ProductCard';
+import { COLORS } from '../Constants/ColorConst';
 
 const SearchProducts = props => {
 
@@ -31,12 +33,13 @@ const SearchProducts = props => {
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} 
         style={{height: '100%'}}>
-            <Appbar.Header>
+            <Appbar.Header style={{backgroundColor: COLORS.PRIMARY}}>
                 <Appbar.BackAction onPress={() => navigation.goBack()}/>
                 <Searchbar style={{width: 300, height: 40}} 
                 placeholder='Search' ref={searchBarRef} 
                 onChangeText={setSearchText} value={searchText}
                 onSubmitEditing={onSearch}/>
+                <CartIcon/>
             </Appbar.Header>
             <FlatList data={products} 
             renderItem={data => <ProductCard product={data.item}/>}

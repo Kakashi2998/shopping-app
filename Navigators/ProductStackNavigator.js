@@ -6,9 +6,6 @@ import Products from '../Screens/Products';
 import { createStackNavigator } from '@react-navigation/stack';
 import SearchProducts from '../Screens/SearchProducts';
 
-// enableScreens();
-// const Stack = createNativeStackNavigator();
-
 const Stack = createStackNavigator();
 
 const ProductStackNavigator = props => {

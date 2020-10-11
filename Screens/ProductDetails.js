@@ -2,11 +2,12 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Appbar, Button, Subheading, Title } from 'react-native-paper';
+import { Appbar, Button, Divider, Subheading, Title } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import CartIcon from '../Components/CartIcon';
 import QuantitySelector from '../Components/QuantitySelector';
 import SearchIcon from '../Components/SearchIcon';
+import { COLORS } from '../Constants/ColorConst';
 import { addToCart, removeFromCart } from '../Store/Actions/CartActions';
 
 const ProductDetails = ({route: {params}}) => {
@@ -27,7 +28,7 @@ const ProductDetails = ({route: {params}}) => {
 
     return (
         <View style={{height: '100%'}}>
-            <Appbar.Header>
+            <Appbar.Header style={{backgroundColor: COLORS.PRIMARY}}>
                 <Appbar.BackAction onPress={() => navigation.goBack()}/>
                 <Appbar.Content/>
                 <SearchIcon/>
@@ -36,9 +37,11 @@ const ProductDetails = ({route: {params}}) => {
             <ScrollView>
                 <Image source={{uri: params.image}} 
                 style={{width: 450, height: 450, overflow: 'visible'}}/>
-                <View style={{margin: 10}}>
-                    <Title>{params.name}</Title>
-                    <Subheading>Price:  Rs. {params.price}</Subheading>
+                <View style={{margin: 10, height: 180}}>
+                    <Title style={{height: 100}}>{params.name}</Title>
+                    <Text style={{fontSize: 30, top: 40}}>
+                        Price:  Rs. {params.price.toFixed(2)}
+                    </Text>
                 </View>
             </ScrollView>
             {qty === 0? 
@@ -46,11 +49,14 @@ const ProductDetails = ({route: {params}}) => {
                 Add to Cart
             </Button>: 
             <View style={{flexDirection: 'row'}}>
-                <Button mode='contained' style={{...styles.orderButton, width: 300}}
+                <Button mode='contained' 
+                style={{...styles.orderButton, width: 250, backgroundColor: COLORS.SECONDARY}}
                 onPress={() => navigation.navigate('Cart')}>
                     Go to Cart
                 </Button>
-                <QuantitySelector qty={qty} addHandler={addCart} subsHandler={subsHandler}/>
+                <QuantitySelector qty={qty} addHandler={addCart} 
+                subsHandler={subsHandler}
+                style={{width: 150}}/>
             </View>
             }
         </View>
@@ -62,7 +68,8 @@ const styles = StyleSheet.create({
         bottom: 0, 
         height: 50, 
         justifyContent: 'center', 
-        borderRadius: 0
+        borderRadius: 0,
+        backgroundColor: COLORS.SECONDARY
     }
 })
 

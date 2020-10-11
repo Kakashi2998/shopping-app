@@ -12,7 +12,7 @@ const CartIcon = props => {
     return (
         <TouchableNativeFeedback 
         background={TouchableNativeFeedback.Ripple('white')}
-        onPress={() => navigation.navigate('Cart')}>
+        onPress={() => navigation.navigate('CartNavigator', {screen: 'Cart'})}>
             {numberOfItems > 0 ? 
             <Badge style={{marginBottom: -20}}>
                 {numberOfItems}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button, IconButton, Title } from 'react-native-paper';
+import { COLORS } from '../Constants/ColorConst';
 
 const QuantitySelector = ({qty, addHandler, subsHandler, style = {}}) => {
     return (
@@ -15,15 +16,15 @@ const QuantitySelector = ({qty, addHandler, subsHandler, style = {}}) => {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row', 
-        justifyContent: 'center'
+        justifyContent: 'space-evenly',
+
     },  
     buttons: {
-        backgroundColor: 'orange',
+        backgroundColor: '#ff8000',
         borderRadius: 10
     },
     qty: {
         marginTop: 5,
-        color: 'green'
     }
 })
 

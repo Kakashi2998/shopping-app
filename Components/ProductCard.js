@@ -24,7 +24,7 @@ const ProductCard = ({product}) => {
                 <Card.Cover source={{uri: product.image}} 
                 style={styles.image}/>
                 <Card.Content>
-                    <Title>Rs. {product.price}</Title>
+                    <Title>Rs. {product.price.toFixed(2)}</Title>
                 </Card.Content>
             </TouchableNativeFeedback>
             <Card.Actions>
@@ -33,6 +33,7 @@ const ProductCard = ({product}) => {
                     Add To Cart
                 </Button>: 
                 <QuantitySelector qty={qty}
+                style={{width: 150}}
                 addHandler={() => dispatch(addToCart(product))}
                 subsHandler={() => dispatch(removeFromCart(product))}
                 /> 

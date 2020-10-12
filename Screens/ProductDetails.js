@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Appbar, Button, Divider, Subheading, Title } from 'react-native-paper';
+import { Appbar, Button, Title } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import CartIcon from '../Components/CartIcon';
 import QuantitySelector from '../Components/QuantitySelector';
@@ -28,12 +28,16 @@ const ProductDetails = ({route: {params}}) => {
 
     return (
         <View style={{height: '100%'}}>
+
+            {/** Header */}
             <Appbar.Header style={{backgroundColor: COLORS.PRIMARY}}>
                 <Appbar.BackAction onPress={() => navigation.goBack()}/>
                 <Appbar.Content/>
                 <SearchIcon/>
                 <CartIcon/>
             </Appbar.Header>
+
+            {/** Content */}
             <ScrollView>
                 <Image source={{uri: params.image}} 
                 style={{width: 450, height: 450, overflow: 'visible'}}/>
@@ -44,10 +48,13 @@ const ProductDetails = ({route: {params}}) => {
                     </Text>
                 </View>
             </ScrollView>
+
+            {/** Add to cart if qty=0 else quantity selector */}
             {qty === 0? 
             <Button mode='contained' onPress={addCart} style={styles.orderButton}>
                 Add to Cart
-            </Button>: 
+            </Button>
+            : 
             <View style={{flexDirection: 'row'}}>
                 <Button mode='contained' 
                 style={{...styles.orderButton, width: 250, backgroundColor: COLORS.SECONDARY}}
@@ -59,6 +66,7 @@ const ProductDetails = ({route: {params}}) => {
                 style={{width: 150}}/>
             </View>
             }
+
         </View>
     );
 }

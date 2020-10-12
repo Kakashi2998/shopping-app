@@ -11,7 +11,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator = props => {
     return (
         <NavigationContainer>
-            <Drawer.Navigator drawerType='slide' 
+            <Drawer.Navigator drawerType='slide' drawerStyle={{width: 200}} 
             drawerContent={(props) => <DrawerContent {...props}/>}>
                 <Drawer.Screen name='ProductNavigator' component={ProductStackNavigator}/>
                 <Drawer.Screen name='CartNavigator' component={CartStackNavigator}/>

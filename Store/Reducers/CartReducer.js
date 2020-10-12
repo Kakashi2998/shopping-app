@@ -1,4 +1,4 @@
-import { ADDTOCART, CARTACTIONS, REMOVEFROMCART } from "../Actions/CartActions";
+import { CARTACTIONS } from "../Actions/CartActions";
 
 const initState = {
     cart: [],
@@ -23,6 +23,7 @@ const CartReducer = (state = initState, action) => {
     }
 }
 
+{/** Helper function to add rpoduct to cart */}
 const addToCart = (state, action) => {
     const product = action.payload.product;
     const index = state.cart.findIndex(item => item.id === product.id);
@@ -41,6 +42,7 @@ const addToCart = (state, action) => {
     }
 }
 
+{/** Helper function to remove product from cart */}
 const removeFromCart = (state, action) => {
     const product = action.payload.product;
     const index = state.cart.findIndex(item => item.id === product.id);
@@ -62,6 +64,7 @@ const removeFromCart = (state, action) => {
     return state;
 }
 
+{/** Helper function to delete product from cart */}
 const deleteFromCart = (state, action) => {
     const inputItem = action.payload.product;
     const cartItem = state.cart.find(item => item.id === inputItem.id);

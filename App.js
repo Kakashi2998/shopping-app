@@ -1,9 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import DrawerNavigator from './Navigators/DrawerNavigator';
-import Products from './Screens/Products';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { combineReducers, createStore } from 'redux';
 import ProductReducer from './Store/Reducers/ProductReducer';

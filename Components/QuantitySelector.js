@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button, IconButton, Title } from 'react-native-paper';
-import { COLORS } from '../Constants/ColorConst';
+import { IconButton, Title } from 'react-native-paper';
 
 const QuantitySelector = ({qty, addHandler, subsHandler, style = {}}) => {
     return (

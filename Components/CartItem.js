@@ -1,6 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Alert, Dimensions, Image, StyleSheet, View } from 'react-native';
+import { Alert, Image, StyleSheet, View } from 'react-native';
 import { IconButton, Surface, Title } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 import { addToCart, deleteFromCart, removeFromCart } from '../Store/Actions/CartActions';

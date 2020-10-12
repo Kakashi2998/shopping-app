@@ -1,16 +1,13 @@
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { FlatList, Keyboard, ScrollView, View } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { Appbar, Searchbar } from 'react-native-paper';
+import { FlatList, View } from 'react-native';
+import { Appbar } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import CartIcon from '../Components/CartIcon';
 import ProductCard from '../Components/ProductCard';
 import SearchIcon from '../Components/SearchIcon';
 import { COLORS } from '../Constants/ColorConst';
-import {dummyProducts} from '../Data/dummyProducts';
-import { toggleSearch } from '../Store/Actions/ProductActions';
 
 const Products = props => {
 
@@ -20,6 +17,8 @@ const Products = props => {
 
     return (
         <View style={{height: '100%'}}>
+
+            {/** Header */}
             <Appbar.Header style={{backgroundColor: COLORS.PRIMARY}}>
                 <Appbar.Action icon='menu' onPress={() => navigation.openDrawer()}/>
                 <Appbar.Content title='Store'/>
@@ -27,13 +26,16 @@ const Products = props => {
                 <CartIcon/>
                 <StatusBar style='light'/>
             </Appbar.Header>
-            <View style={{marginBottom: 100}}>
+
+            {/** Products */}
+            <View style={{marginBottom: 100, alignSelf: 'center'}}>
                 <FlatList 
                 data={products} 
                 renderItem={(data) => <ProductCard product={data.item}/>}
                 numColumns={2}
                 />
             </View>
+
         </View>
     );
 }   

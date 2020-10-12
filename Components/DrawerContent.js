@@ -8,15 +8,24 @@ const DrawerContent = ({state, navigation}) => {
     return (
         <View style={{marginTop: 100}}>
             <Button 
-            onPress={() => navigation.navigate('Products')}>
-                <Text style={{color: index === 0? COLORS.PRIMARY: 'black'}}>Store</Text>
+            onPress={() => navigation.navigate('Products')}
+            style={{marginVertical: 10}}>
+                <Text style={{color: index === 0? COLORS.PRIMARY: COLORS.SECONDARY, fontSize: 20}}>
+                    Store
+                </Text>
             </Button>
             <Button 
-            onPress={() => navigation.navigate('CartNavigator', {screen: 'Cart'})}>
-                <Text style={{color: index === 1? COLORS.PRIMARY: 'black'}}>Cart</Text>
+            onPress={() => navigation.navigate('CartNavigator', {screen: 'Cart'})}
+            style={{marginVertical: 10}}>
+                <Text style={{color: index === 1? COLORS.PRIMARY: COLORS.SECONDARY, fontSize: 20}}>
+                    Cart
+                </Text>
             </Button>
-            <Button onPress={() => navigation.navigate('Orders')}>
-                <Text style={{color: index === 2? COLORS.PRIMARY: 'black'}}>Orders</Text>
+            <Button onPress={() => navigation.navigate('Orders')}
+            style={{marginVertical: 10}}>
+                <Text style={{color: index === 2? COLORS.PRIMARY: COLORS.SECONDARY, fontSize: 20}}>
+                    Orders
+                </Text>
             </Button>
         </View>
     );

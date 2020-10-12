@@ -1,6 +1,6 @@
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import React, { useRef } from 'react';
-import { Keyboard, View } from 'react-native';
+import { Keyboard } from 'react-native';
 import { FlatList, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Appbar, Searchbar } from 'react-native-paper';
 import { useSelector } from 'react-redux';
@@ -15,14 +15,16 @@ const SearchProducts = props => {
     const searchBarRef = useRef();
     const [searchText, setSearchText] = React.useState('');
     const [products, setProducts] = React.useState([]);
+    const allProducts = useSelector(state => state.productReducer.products);
 
+    {/** Focus on searchbar if screen is focussed */}
     React.useEffect(() => {
         if(isFocussed)
             searchBarRef.current.focus();
     }, [isFocussed])
 
-    const allProducts = useSelector(state => state.productReducer.products);
     
+    {/** Searchbar input handler */}
     const onSearch = () => {
         setProducts(
             allProducts
@@ -33,6 +35,8 @@ const SearchProducts = props => {
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} 
         style={{height: '100%'}}>
+
+            {/** Header */}
             <Appbar.Header style={{backgroundColor: COLORS.PRIMARY}}>
                 <Appbar.BackAction onPress={() => navigation.goBack()}/>
                 <Searchbar style={{width: 300, height: 40}} 
@@ -41,9 +45,12 @@ const SearchProducts = props => {
                 onSubmitEditing={onSearch}/>
                 <CartIcon/>
             </Appbar.Header>
+
+            {/** Search Result */}
             <FlatList data={products} 
             renderItem={data => <ProductCard product={data.item}/>}
             numColumns={2}/>
+
         </TouchableWithoutFeedback>
     );
 }

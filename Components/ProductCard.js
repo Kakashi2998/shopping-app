@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet, Text } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import { Button, Card, Title } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
+import { COLORS } from '../Constants/ColorConst';
 import { addToCart, removeFromCart } from '../Store/Actions/CartActions';
 import QuantitySelector from './QuantitySelector';
 
@@ -20,17 +21,20 @@ const ProductCard = ({product}) => {
             <TouchableNativeFeedback 
             background={TouchableNativeFeedback.Ripple('white')}
             onPress={() => navigation.navigate('Product Details', {...product})}>
-                <Card.Title title={product.name} titleNumberOfLines={3}/>
+                <Card.Title title={product.name} titleNumberOfLines={2}/>
                 <Card.Cover source={{uri: product.image}} 
                 style={styles.image}/>
                 <Card.Content>
-                    <Title>Rs. {product.price.toFixed(2)}</Title>
+                    <Title>Rs. </Title>
+                    <Title>{product.price.toFixed(2)}</Title>
                 </Card.Content>
             </TouchableNativeFeedback>
             <Card.Actions>
                 {qty === 0? 
                 <Button onPress={() => dispatch(addToCart(product))}>
-                    Add To Cart
+                    <Text style={{color: COLORS.SECONDARY}}>
+                        Add To Cart
+                    </Text>
                 </Button>: 
                 <QuantitySelector qty={qty}
                 style={{width: 150}}
@@ -45,9 +49,11 @@ const ProductCard = ({product}) => {
 
 const styles = StyleSheet.create({
     container: {
-        width: 185,
+        width: Dimensions.get('screen').width / 2.2,
         margin: 10, 
-        overflow: 'hidden'
+        overflow: 'hidden',
+        borderRadius: 10,
+        padding: 10
     },
     image: {
         width: 185, 

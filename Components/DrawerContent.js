@@ -27,6 +27,9 @@ const DrawerContent = ({state, navigation}) => {
                     Orders
                 </Text>
             </Button>
+            <Button onPress={() => navigation.navigate('CreateProduct')}>
+                Create Product
+            </Button>
         </View>
     );
 }

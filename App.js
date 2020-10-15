@@ -2,11 +2,12 @@ import React from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import DrawerNavigator from './Navigators/DrawerNavigator';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import ProductReducer from './Store/Reducers/ProductReducer';
 import CartReducer from './Store/Reducers/CartReducer';
 import { Provider as ReduxProvider } from 'react-redux';
 import OrdersReducer from './Store/Reducers/OrdersReducer';
+import ReduxThunk from 'redux-thunk';
 
 const reducer = combineReducers({
   productReducer: ProductReducer,
@@ -14,7 +15,11 @@ const reducer = combineReducers({
   orderReducer: OrdersReducer
 })
 
-const store = createStore(reducer);
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+
+// const store = createStore(reducer, composeEnhancers(applyMiddleware(ReduxThunk)));
+const store = createStore(reducer, applyMiddleware(ReduxThunk));
+
 
 const App = props => {
   return (

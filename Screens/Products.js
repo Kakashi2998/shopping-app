@@ -2,18 +2,24 @@ import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { Appbar } from 'react-native-paper';
+import { ActivityIndicator, Appbar } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import CartIcon from '../Components/CartIcon';
 import ProductCard from '../Components/ProductCard';
 import SearchIcon from '../Components/SearchIcon';
 import { COLORS } from '../Constants/ColorConst';
+import { fetchProducts } from '../Store/Actions/ProductActions';
 
 const Products = props => {
 
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const products = useSelector(state => state.productReducer.products);
+    const loadingProducts = products.length === 0;
+
+    React.useEffect(() => {
+        dispatch(fetchProducts());
+    }, []);
 
     return (
         <View style={{height: '100%'}}>
@@ -28,13 +34,17 @@ const Products = props => {
             </Appbar.Header>
 
             {/** Products */}
-            <View style={{marginBottom: 100, alignSelf: 'center'}}>
-                <FlatList 
-                data={products} 
-                renderItem={(data) => <ProductCard product={data.item}/>}
-                numColumns={2}
-                />
-            </View>
+            {loadingProducts? 
+                <ActivityIndicator animating={true} color={COLORS.SECONDARY} size={30}/>
+                :
+                <View style={{marginBottom: 100, alignSelf: 'center'}}>
+                    <FlatList 
+                    data={products} 
+                    renderItem={(data) => <ProductCard product={data.item}/>}
+                    numColumns={2}
+                    />
+                </View>
+            }
 
         </View>
     );

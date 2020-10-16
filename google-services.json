@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "108910296796",
+    "firebase_url": "https://shop-app-bcecc.firebaseio.com",
+    "project_id": "shop-app-bcecc",
+    "storage_bucket": "shop-app-bcecc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108910296796:android:ff4fc5adb8f3f312507e19",
+        "android_client_info": {
+          "package_name": "com.ApoorvMathur"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108910296796-ouqduq4dt173ri0unm5nr6t7cir4hohe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjP-txmVtA6ywCUCrA2pQWV61cMioPDU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108910296796-ouqduq4dt173ri0unm5nr6t7cir4hohe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

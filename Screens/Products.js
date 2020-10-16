@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { FlatList, View } from "react-native";
@@ -15,10 +15,13 @@ const Products = (props) => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productReducer.products);
   const loadingProducts = products.length === 0;
+  const isFocussed = useIsFocused();
+  // console.log("Products -> isFocussed", isFocussed)
 
   React.useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
+    if(isFocussed)
+      dispatch(fetchProducts());
+  }, [isFocussed]);
 
   return (
     <View style={{ height: "100%" }}>

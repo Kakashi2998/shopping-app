@@ -5,6 +5,7 @@ export const PRODUCTACTIONS = {
 };
 
 export const fetchProducts = () => {
+  // console.log('Fetching products...');
   const products = [];
   return async (dispatch) => {
     const productRequest = await fetch(

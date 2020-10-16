@@ -49,6 +49,9 @@ const DrawerContent = ({ state, navigation }) => {
       <Button onPress={() => navigation.navigate("CreateProduct")}>
         Create Product
       </Button>
+      <Button onPress={() => navigation.navigate("Login")}>
+        Sign In
+      </Button>
     </View>
   );
 };

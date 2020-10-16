@@ -8,6 +8,8 @@ import CartReducer from "./Store/Reducers/CartReducer";
 import { Provider as ReduxProvider } from "react-redux";
 import OrdersReducer from "./Store/Reducers/OrdersReducer";
 import ReduxThunk from "redux-thunk";
+import firebase from 'firebase/app';
+import { firebaseConfig } from "./Config/FirebaseConfig";
 
 const reducer = combineReducers({
   productReducer: ProductReducer,
@@ -19,6 +21,8 @@ const reducer = combineReducers({
 
 // const store = createStore(reducer, composeEnhancers(applyMiddleware(ReduxThunk)));
 const store = createStore(reducer, applyMiddleware(ReduxThunk));
+
+firebase.initializeApp(firebaseConfig);
 
 const App = (props) => {
   return (
